@@ -1,5 +1,5 @@
 # Heart Disease UCI prediction API
-Heart Disease prediction model based on this (dataset)[https://archive.ics.uci.edu/ml/datasets/Heart+Diseaset] using the H2O AutoML (Generalized Linear Model)[https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/glm.html]. 
+Heart Disease prediction model based on this [dataset](https://archive.ics.uci.edu/ml/datasets/Heart+Diseaset) using the H2O AutoML [Generalized Linear Model](https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/glm.html). 
 
 ## Endpoints
 ### /predict
