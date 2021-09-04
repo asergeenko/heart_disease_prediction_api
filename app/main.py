@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, status
+from fastapi import FastAPI, Request, status,Depends
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -64,8 +64,8 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         content=jsonable_encoder({"detail": exc.errors()}),
     )
 
-@app.post("/predict")
-def predict(data: Item):
+@app.get("/predict")
+def predict(data: Item=Depends()):
     """
     Predict the heart disease from follwing inputs:
 
@@ -106,52 +106,19 @@ async def root():
 <p>Heart Disease prediction model based on this <a href="https://archive.ics.uci.edu/ml/datasets/Heart+Disease">dataset</a> using the H2O AutoML <a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/data-science/glm.html">Generalized Linear Model</a>.</p>
 
 <ul>
-<li><a href="/docs#/default/predict_predict_post">Documentation</a></li>
+<li><a href="/docs#/default/predict_predict_get">Documentation</a></li>
 <li><a href="https://github.com/asergeenko/heart_disease_prediction_api">Git repo</a></li>
 </ul>
 <h3>Sample requests:</h3>
 <pre><code>
-curl -X 'POST' \
-  'http://127.0.0.1/predict' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "age": 67,
-  "sex": 1,
-  "cp": 0,
-  "trestbps": 160,
-  "chol": 286,
-  "fbs": 0,
-  "restecg": 0,
-  "thalach": 108,
-  "exang": 1,
-  "oldpeak": 1.5,
-  "slope": 1,
-  "ca": 3,
-  "thal": 2
-}'
+curl -X 'GET' \
+  'http://127.0.0.1/predict?age=67&sex=true&cp=0&trestbps=160&chol=286&fbs=false&restecg=0&thalach=108&exang=true&oldpeak=1.5&slope=1&ca=3&thal=2' \
+  -H 'accept: application/json'
 </code></pre>
 <pre><code>
-curl -X 'POST' \
-  'http://127.0.0.1/predict' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "age": 45,
-  "sex": 1,
-  "cp": 2,
-  "trestbps": 135,
-  "chol": 233,
-  "fbs": 0,
-  "restecg": 1,
-  "thalach": 180,
-  "exang": 1,
-  "oldpeak": 0.4,
-  "slope": 2,
-  "ca": 0,
-  "thal": 2
-}'
-
+curl -X 'GET' \
+  'http://127.0.0.1/predict?age=45&sex=true&cp=2&trestbps=135&chol=233&fbs=false&restecg=1&thalach=180&exang=true&oldpeak=0.4&slope=2&ca=0&thal=2' \
+  -H 'accept: application/json'
 </code></pre>
 </div>
 </body>
