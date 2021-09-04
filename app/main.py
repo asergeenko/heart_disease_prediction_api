@@ -111,13 +111,13 @@ async def root():
 </ul>
 <h3>Sample requests:</h3>
 <pre><code>
-curl -X 'GET' \
-  'http://127.0.0.1/predict?age=67&sex=true&cp=0&trestbps=160&chol=286&fbs=false&restecg=0&thalach=108&exang=true&oldpeak=1.5&slope=1&ca=3&thal=2' \
+curl -X 'GET' &#92;
+  'http://127.0.0.1/predict?age=67&sex=true&cp=0&trestbps=160&chol=286&fbs=false&restecg=0&thalach=108&exang=true&oldpeak=1.5&slope=1&ca=3&thal=2' &#92;
   -H 'accept: application/json'
 </code></pre>
 <pre><code>
-curl -X 'GET' \
-  'http://127.0.0.1/predict?age=45&sex=true&cp=2&trestbps=135&chol=233&fbs=false&restecg=1&thalach=180&exang=true&oldpeak=0.4&slope=2&ca=0&thal=2' \
+curl -X 'GET' &#92;
+  'http://127.0.0.1/predict?age=45&sex=true&cp=2&trestbps=135&chol=233&fbs=false&restecg=1&thalach=180&exang=true&oldpeak=0.4&slope=2&ca=0&thal=2' &#92;
   -H 'accept: application/json'
 </code></pre>
 </div>
