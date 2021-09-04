@@ -3,7 +3,7 @@ Heart Disease prediction model based on this [dataset](https://archive.ics.uci.e
 
 ## Endpoints
 ### /predict
-Metod: POST
+Metod: GET
 
 #### Request parameters
 - **age**: age [int],
@@ -16,7 +16,7 @@ Metod: POST
 - **thalach**: maximum heart rate achieved [int],
 - **exang**: exercise induced angina [0,1],
 - **oldpeak**: = ST depression induced by exercise relative to rest [float],
-- **slope**: the slope of the peak exercise ST segment[int],
+- **slope**: the slope of the peak exercise ST segment [int],
 - **ca**: number of major vessels (0-3) colored by flourosopy [0-3],
 - **thal**: thal [1-3]
 
@@ -32,45 +32,9 @@ Metod: POST
 
 **Sample requests**
 
-$ curl -X 'POST' \
-  'http://127.0.0.1/predict' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "age": 67,
-  "sex": 1,
-  "cp": 0,
-  "trestbps": 160,
-  "chol": 286,
-  "fbs": 0,
-  "restecg": 0,
-  "thalach": 108,
-  "exang": 1,
-  "oldpeak": 1.5,
-  "slope": 1,
-  "ca": 3,
-  "thal": 2
-}'
+$ curl -X 'GET' 'http://127.0.0.1/predict?age=67&sex=true&cp=0&trestbps=160&chol=286&fbs=false&restecg=0&thalach=108&exang=true&oldpeak=1.5&slope=1&ca=3&thal=2' -H 'accept: application/json'
 
-$ curl -X 'POST' \
-  'http://127.0.0.1/predict' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "age": 45,
-  "sex": 1,
-  "cp": 2,
-  "trestbps": 135,
-  "chol": 233,
-  "fbs": 0,
-  "restecg": 1,
-  "thalach": 180,
-  "exang": 1,
-  "oldpeak": 0.4,
-  "slope": 2,
-  "ca": 0,
-  "thal": 2
-}'
+$ curl -X 'GET' 'http://127.0.0.1/predict?age=45&sex=true&cp=2&trestbps=135&chol=233&fbs=false&restecg=1&thalach=180&exang=true&oldpeak=0.4&slope=2&ca=0&thal=2' -H 'accept: application/json'
 
 ## Installation
 *docker build -t heart_disease_uci . && docker run -p 80:80 --rm heart_disease_uci*
